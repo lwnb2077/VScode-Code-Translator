@@ -1,0 +1,294 @@
+{
+  "name": "code-translator",
+  "displayName": "Code Translator - 智能代码翻译器",
+  "description": "一键翻译代码和单词，支持划词翻译、点击翻译，多种翻译服务可选",
+  "version": "1.1.0",
+  "publisher": "code-translator",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/code-translator"
+  },
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other",
+    "Education",
+    "Linters"
+  ],
+  "keywords": [
+    "translator",
+    "translation",
+    "translate",
+    "chinese",
+    "english",
+    "翻译",
+    "代码翻译",
+    "划词翻译",
+    "单词翻译"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "codeTranslator.translate",
+        "title": "翻译选中内容"
+      },
+      { "command": "codeTranslator.translate.zhCN", "title": "翻译为简体中文" },
+      { "command": "codeTranslator.translate.zhTW", "title": "翻譯為繁體中文" },
+      { "command": "codeTranslator.translate.en",   "title": "Translate to English" },
+      { "command": "codeTranslator.translate.ja",   "title": "日本語に翻訳" },
+      { "command": "codeTranslator.translate.ko",   "title": "한국어로 번역" },
+      { "command": "codeTranslator.translate.fr",   "title": "Traduire en français" },
+      { "command": "codeTranslator.translate.de",   "title": "Ins Deutsche übersetzen" },
+      { "command": "codeTranslator.translate.es",   "title": "Traducir al español" },
+      { "command": "codeTranslator.translate.it",   "title": "Traduci in italiano" },
+      { "command": "codeTranslator.translate.ru",   "title": "Перевести на русский" },
+      { "command": "codeTranslator.translate.pt",   "title": "Traduzir para português" },
+      {
+        "command": "codeTranslator.showDetails",
+        "title": "查看翻译详情"
+      },
+      
+      {
+        "command": "codeTranslator.clear",
+        "title": "清除翻译"
+      },
+      {
+        "command": "codeTranslator.openSettings",
+        "title": "打开设置"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        { "when": "editorHasSelection && config.codeTranslator.showInContextMenu && codeTranslator.lang.isZhCN", "command": "codeTranslator.translate.zhCN", "group": "navigation" },
+        { "when": "editorHasSelection && config.codeTranslator.showInContextMenu && codeTranslator.lang.isZhTW", "command": "codeTranslator.translate.zhTW", "group": "navigation" },
+        { "when": "editorHasSelection && config.codeTranslator.showInContextMenu && codeTranslator.lang.isEn",   "command": "codeTranslator.translate.en",   "group": "navigation" },
+        { "when": "editorHasSelection && config.codeTranslator.showInContextMenu && codeTranslator.lang.isJa",   "command": "codeTranslator.translate.ja",   "group": "navigation" },
+        { "when": "editorHasSelection && config.codeTranslator.showInContextMenu && codeTranslator.lang.isKo",   "command": "codeTranslator.translate.ko",   "group": "navigation" },
+        { "when": "editorHasSelection && config.codeTranslator.showInContextMenu && codeTranslator.lang.isFr",   "command": "codeTranslator.translate.fr",   "group": "navigation" },
+        { "when": "editorHasSelection && config.codeTranslator.showInContextMenu && codeTranslator.lang.isDe",   "command": "codeTranslator.translate.de",   "group": "navigation" },
+        { "when": "editorHasSelection && config.codeTranslator.showInContextMenu && codeTranslator.lang.isEs",   "command": "codeTranslator.translate.es",   "group": "navigation" },
+        { "when": "editorHasSelection && config.codeTranslator.showInContextMenu && codeTranslator.lang.isIt",   "command": "codeTranslator.translate.it",   "group": "navigation" },
+        { "when": "editorHasSelection && config.codeTranslator.showInContextMenu && codeTranslator.lang.isRu",   "command": "codeTranslator.translate.ru",   "group": "navigation" },
+        { "when": "editorHasSelection && config.codeTranslator.showInContextMenu && codeTranslator.lang.isPt",   "command": "codeTranslator.translate.pt",   "group": "navigation" }
+      ]
+    },
+    "configuration": {
+      "title": "Code Translator",
+      "properties": {
+        "codeTranslator.apiProvider": {
+          "type": "string",
+          "default": "google",
+          "enum": [
+            "google",
+            "deepl",
+            "microsoft",
+            "openai",
+            "gemini"
+          ],
+          "enumDescriptions": [
+            "Google Translate - 支持100+语言",
+            "DeepL - 高质量翻译（支持免费版和专业版）",
+            "微软翻译 - 支持60+语言",
+            "OpenAI GPT‑4o mini - 高性价比多模态（需要 API Key）",
+            "Google Gemini 2.5 Flash - 多模态低延迟（需要 API Key）"
+          ],
+          "description": "翻译服务提供商"
+        },
+        "codeTranslator.sourceLanguage": {
+          "type": "string",
+          "default": "auto",
+          "enum": [
+            "auto",
+            "en",
+            "zh",
+            "ja",
+            "ko",
+            "fr",
+            "de",
+            "es",
+            "it",
+            "ru",
+            "pt"
+          ],
+          "enumDescriptions": [
+            "自动检测",
+            "英语",
+            "中文",
+            "日语",
+            "韩语",
+            "法语",
+            "德语",
+            "西班牙语",
+            "意大利语",
+            "俄语",
+            "葡萄牙语"
+          ],
+          "description": "源语言（建议使用自动检测）"
+        },
+        "codeTranslator.targetLanguage": {
+          "type": "string",
+          "default": "zh-CN",
+          "enum": [
+            "zh-CN",
+            "zh-TW",
+            "en",
+            "ja",
+            "ko",
+            "fr",
+            "de",
+            "es",
+            "it",
+            "ru",
+            "pt"
+          ],
+          "enumDescriptions": [
+            "简体中文",
+            "繁体中文",
+            "英语",
+            "日语",
+            "韩语",
+            "法语",
+            "德语",
+            "西班牙语",
+            "意大利语",
+            "俄语",
+            "葡萄牙语"
+          ],
+          "description": "目标语言"
+        },
+        "codeTranslator.googleApiKey": {
+          "type": "string",
+          "default": "",
+          "description": "Google Translate API Key"
+        },
+        "codeTranslator.deeplApiKey": {
+          "type": "string",
+          "default": "",
+          "description": "DeepL API Key (免费版以':fx'结尾)"
+        },
+        "codeTranslator.microsoftApiKey": {
+          "type": "string",
+          "default": "",
+          "description": "微软翻译 API Key"
+        },
+        "codeTranslator.openaiApiKey": {
+          "type": "string",
+          "default": "",
+          "description": "OpenAI API Key（用于 GPT‑4o mini）"
+        },
+        "codeTranslator.microsoftRegion": {
+          "type": "string",
+          "default": "global",
+          "description": "微软翻译区域(如 eastasia、westeurope)，默认 global"
+        },
+        "codeTranslator.geminiApiKey": {
+          "type": "string",
+          "default": "",
+          "description": "Google AI Studio API Key（用于 Gemini 2.5 Flash）"
+        },
+        "codeTranslator.autoTranslate": {
+          "type": "boolean",
+          "default": true,
+          "description": "选中代码后自动翻译"
+        },
+        "codeTranslator.translationDelay": {
+          "type": "number",
+          "default": 7,
+          "minimum": 1,
+          "maximum": 5000,
+          "description": "自动翻译延迟时间(毫秒)"
+        },
+        "codeTranslator.maxTextLength": {
+          "type": "number",
+          "default": 2000,
+          "minimum": 100,
+          "maximum": 10000,
+          "description": "单次翻译的最大字符数"
+        },
+        
+        "codeTranslator.minWordLength": {
+          "type": "number",
+          "default": 3,
+          "minimum": 1,
+          "maximum": 10,
+          "description": "最小翻译单词长度（字符数）"
+        },
+        
+        
+        "codeTranslator.autoHideTranslation": {
+          "type": "boolean",
+          "default": true,
+          "description": "翻译结果是否自动消失"
+        },
+        "codeTranslator.autoHideDelay": {
+          "type": "number",
+          "default": 10,
+          "minimum": 3,
+          "maximum": 120,
+          "description": "翻译结果自动消失延迟时间（秒）"
+        },
+        "codeTranslator.selectionTranslate": {
+          "type": "boolean",
+          "default": true,
+          "description": "启用划词选中文本翻译"
+        },
+        
+        "codeTranslator.clickTranslateMode": {
+          "type": "string",
+          "default": "single",
+          "enum": [
+            "none",
+            "single", 
+            "double"
+          ],
+          "enumDescriptions": [
+            "禁用点击翻译",
+            "单击单词翻译",
+            "双击单词翻译"
+          ],
+          "description": "点击翻译模式"
+        },
+        "codeTranslator.showInContextMenu": {
+          "type": "boolean",
+          "default": true,
+          "description": "在右键菜单中显示翻译选项"
+        },
+        "codeTranslator.detailsDisplayMode": {
+          "type": "string",
+          "default": "system",
+          "enum": ["system", "panel"],
+          "enumDescriptions": [
+            "系统弹窗（模态对话框）",
+            "独立面板（支持固定宽度与滚动）"
+          ],
+          "description": "翻译详情展现方式"
+        },
+        "codeTranslator.detailsPanelWidth": {
+          "type": "number",
+          "default": 800,
+          "minimum": 480,
+          "maximum": 1600,
+          "description": "详情面板固定宽度（像素，仅当 detailsDisplayMode=panel 时生效）"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.74.0",
+    "@types/node": "16.x",
+    "typescript": "^4.9.3"
+  },
+  "dependencies": {
+    "axios": "^1.6.0"
+  }
+}

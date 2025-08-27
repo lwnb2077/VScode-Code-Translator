@@ -1,0 +1,17 @@
+.vscode/**
+.vscode-test/**
+src/**
+.gitignore
+.yarnrc
+vsc-extension-quickstart.md
+**/tsconfig.json
+**/.eslintrc.json
+**/*.map
+**/*.ts
+# 保留运行时依赖（例如 axios），不要忽略 node_modules
+.DS_Store
+.env
+.env.*
+.history/**
+.gemini-clipboard/**
+.github/**
