@@ -1,8 +1,8 @@
 {
-  "name": "Translater2077",
-  "displayName": "Translater2077",
-  "description": "Translater2077：一键翻译代码和单词，支持划词翻译、点击翻译，多种翻译服务可选",
-  "version": "1.1.0",
+  "name": "Translator2077",
+  "displayName": "Translator2077",
+  "description": "Translator2077：一键翻译代码和单词，支持划词翻译、点击翻译，多种翻译服务可选",
+  "version": "1.2.0",
   "license": "MIT",
   "publisher": "SILENTCORELTD",
   "icon": "icon.png",
@@ -80,7 +80,7 @@
       ]
     },
     "configuration": {
-      "title": "Translater2077",
+      "title": "Translator2077",
       "properties": {
         "codeTranslator.apiProvider": {
           "type": "string",
@@ -223,7 +223,7 @@
         },
         "codeTranslator.openrouterSiteTitle": {
           "type": "string",
-          "default": "Translater2077",
+          "default": "Translator2077",
           "description": "可选：X-OpenRouter-Title（应用名称，用于 OpenRouter 统计）"
         },
         "codeTranslator.customOpenAIApiKey": {
