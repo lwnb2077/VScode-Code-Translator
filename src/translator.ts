@@ -523,7 +523,7 @@ export class OpenRouterTranslator {
         this.apiKey = apiKey || '';
         this.model = (model || 'openai/gpt-4o-mini').trim();
         this.siteUrl = (siteUrl || '').trim();
-        this.siteTitle = (siteTitle || 'Translator2077').trim() || 'Translator2077';
+        this.siteTitle = (siteTitle || 'Translater2077').trim() || 'Translater2077';
     }
 
     private headers(): Record<string, string> {

@@ -1,8 +1,9 @@
 {
-  "name": "Translator2077",
-  "displayName": "Translator2077",
-  "description": "Translator2077：一键翻译代码和单词，支持划词翻译、点击翻译，多种翻译服务可选",
+  "name": "Translater2077",
+  "displayName": "Translater2077",
+  "description": "Translater2077：一键翻译代码和单词，支持划词翻译、点击翻译，多种翻译服务可选",
   "version": "1.1.0",
+  "license": "MIT",
   "publisher": "SILENTCORELTD",
   "icon": "icon.png",
   "repository": {
@@ -79,7 +80,7 @@
       ]
     },
     "configuration": {
-      "title": "Translator2077",
+      "title": "Translater2077",
       "properties": {
         "codeTranslator.apiProvider": {
           "type": "string",
@@ -222,7 +223,7 @@
         },
         "codeTranslator.openrouterSiteTitle": {
           "type": "string",
-          "default": "Translator2077",
+          "default": "Translater2077",
           "description": "可选：X-OpenRouter-Title（应用名称，用于 OpenRouter 统计）"
         },
         "codeTranslator.customOpenAIApiKey": {
@@ -350,7 +351,8 @@
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./"
+    "watch": "tsc -watch -p ./",
+    "openvsx:publish": "npx ovsx publish"
   },
   "devDependencies": {
     "@types/vscode": "^1.85.0",

@@ -135,7 +135,7 @@ export class TranslationManager {
                     apiKey,
                     config.get<string>('openrouterModel', 'openai/gpt-4o-mini'),
                     config.get<string>('openrouterSiteUrl', ''),
-                    config.get<string>('openrouterSiteTitle', 'Translator2077')
+                    config.get<string>('openrouterSiteTitle', 'Translater2077')
                 );
                 break;
             case 'customOpenAI':

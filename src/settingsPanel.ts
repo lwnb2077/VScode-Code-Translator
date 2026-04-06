@@ -18,7 +18,7 @@ export class SettingsPanel {
 
         const panel = vscode.window.createWebviewPanel(
             'codeTranslatorSettings',
-            'Translator2077设置',
+            'Translater2077设置',
             column || vscode.ViewColumn.One,
             {
                 enableScripts: true,
@@ -142,7 +142,7 @@ export class SettingsPanel {
                 message: 'settingsSavedSuccess'
             });
 
-            vscode.window.showInformationMessage('Translator2077设置已保存！');
+            vscode.window.showInformationMessage('Translater2077设置已保存！');
         } catch (error) {
             this._panel.webview.postMessage({
                 type: 'settingsSaved',
@@ -188,7 +188,7 @@ export class SettingsPanel {
             microsoftRegion: config.get('microsoftRegion', 'global'),
             openrouterModel: config.get('openrouterModel', 'openai/gpt-4o-mini'),
             openrouterSiteUrl: config.get('openrouterSiteUrl', ''),
-            openrouterSiteTitle: config.get('openrouterSiteTitle', 'Translator2077'),
+            openrouterSiteTitle: config.get('openrouterSiteTitle', 'Translater2077'),
             customOpenAIBaseUrl: config.get('customOpenAIBaseUrl', 'https://api.openai.com/v1'),
             customOpenAIModel: config.get('customOpenAIModel', 'gpt-4o-mini'),
             customAnthropicBaseUrl: config.get('customAnthropicBaseUrl', 'https://api.anthropic.com/v1/messages'),
@@ -315,7 +315,7 @@ export class SettingsPanel {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src ${webview.cspSource} https:; style-src ${webview.cspSource} 'unsafe-inline'; script-src 'nonce-${nonce}';">
-    <title>Translator2077设置</title>
+    <title>Translater2077设置</title>
     <style>
         /* 语言切换按钮样式 */
         .language-switcher {
@@ -537,7 +537,7 @@ export class SettingsPanel {
     </div>
 
     <div class="container">
-        <h1 data-i18n="title">Translator2077设置</h1>
+        <h1 data-i18n="title">Translater2077设置</h1>
         
         <div id="messages"></div>
         
@@ -636,7 +636,7 @@ export class SettingsPanel {
                 </div>
                 <div class="form-group">
                     <label for="openrouterSiteTitle" data-i18n="openrouterSiteTitleLabel">X-OpenRouter-Title（可选）：</label>
-                    <input type="text" id="openrouterSiteTitle" style="width:100%;box-sizing:border-box;" placeholder="Translator2077">
+                    <input type="text" id="openrouterSiteTitle" style="width:100%;box-sizing:border-box;" placeholder="Translater2077">
                 </div>
                 <p style="color: var(--vscode-descriptionForeground); font-size: 12px; margin-top: 8px;" data-i18n="openrouterNotes">OpenAI 兼容 Chat Completions；鉴权 Bearer；可选 Referer/Title（OpenRouter 官方推荐）。</p>
             </div>
@@ -839,7 +839,7 @@ export class SettingsPanel {
         // 多语言资源
         const i18nResources = {
             zh: {
-                title: "🌐 Translator2077设置",
+                title: "🌐 Translater2077设置",
                 apiSettings: "🔑 翻译API设置",
                 providerLabel: "翻译服务提供商：",
                 "provider.google": "Google Translate",
@@ -937,7 +937,7 @@ export class SettingsPanel {
                 geminiNotes: "需要在 Google AI Studio 申请 API Key；部分地区不可用或需代理，计费与配额以官方为准。"
             },
             en: {
-                title: "🌐 Translator2077 Settings",
+                title: "🌐 Translater2077 Settings",
                 apiSettings: "🔑 Translation API Settings",
                 providerLabel: "Translation Service Provider:",
                 "provider.google": "Google Translate",
@@ -1035,7 +1035,7 @@ export class SettingsPanel {
                 geminiNotes: "Requires API key from Google AI Studio; some regions may be unavailable or require proxy, with fees and quotas subject to official documentation."
             },
             ja: {
-                title: "🌐 Translator2077 設定",
+                title: "🌐 Translater2077 設定",
                 apiSettings: "🔑 翻訳API設定",
                 providerLabel: "翻訳サービスプロバイダー：",
                 "provider.google": "Google翻訳",
