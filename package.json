@@ -8,7 +8,7 @@
   "icon": "icon.png",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/code-translator"
+    "url": "https://github.com/lwnb2077/Translater2077.git"
   },
   "engines": {
     "vscode": "^1.85.0"
